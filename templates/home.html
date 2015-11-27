@@ -3,6 +3,13 @@
 
 {% block head_title %}Welcome | {{ block.super }}{% endblock %}
 
+<style>
+{% block style %}
+
+}
+{% endblock %}
+</style>
+
 {% block jumbotron_content %}
 <div class="row">
     <div class="col-sm-6">
@@ -21,20 +28,20 @@
 {% block content %}
 <div class="row">
     <div class="col-xs-3 pull-right">
-        <p class="lead">{{ title }}</p>
+        <p class="lead text-align-center">{{ title }}</p>
         <form method="post" action=''>{% csrf_token %}
             {{ form | crispy }}
             <input class="btn btn-primary" type="submit" value="Sign Up">
         </form>
     </div>
-    <div class="col-xs-3">
-        <p class="lead">Built in with Django &amp; Bootstrap</p>
+    <div class="col-xs-3 ">
+        <p class="lead text-align-center">Built in with Django &amp; Bootstrap</p>
     </div>
-    <div class="col-xs-3">
-        <p class="lead">Created for starters of all kinds</p>
+    <div class="col-xs-3 ">
+        <p class="lead text-align-center">Created for starters of all kinds</p>
     </div>
-    <div class="col-xs-3">
-        <p class="lead">Always open source</p>
+    <div class="col-xs-3 ">
+        <p class="lead text-align-center">Always open source</p>
     </div>
   </div>
 
