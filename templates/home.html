@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block head_title %}Welcome | {{ block.super }}{% endblock %}
 
@@ -12,6 +13,12 @@
 .jumbotron {
     background-color: #0E3D14;
     color: #ffffff;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
 }
 {% endblock %}
 </style>
@@ -27,8 +34,8 @@
               <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
             </p>
         </div>
-        <div class="col-sm-6" style="background-color: black; min-height: 300px;">
-
+        <div class="col-sm-6">
+            <iframe width="480" height="315" src="https://www.youtube.com/embed/VGyVsiqB0cU" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     </div>
@@ -46,6 +53,7 @@
     </div>
     <div class="col-xs-3 ">
         <p class="lead text-align-center">Built in with Django &amp; Bootstrap</p>
+        <img src="{% static 'img/django_badge.png' %}" class="img-responsive center ">
     </div>
     <div class="col-xs-3 ">
         <p class="lead text-align-center">Created for starters of all kinds</p>
