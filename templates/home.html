@@ -24,6 +24,7 @@ img.center {
 </style>
 
 {% block jumbotron %}
+{% if not request.user.is_authenticated %}
 <div class="jumbotron">
     <div class="container">
     <div class="row">
@@ -40,9 +41,16 @@ img.center {
     </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+<h1>You are logged in!</h1>
+
+{{ queryset }}
+
+{% else %}
 <div class="row">
     <div class="col-xs-3 pull-right">
         <p class="lead text-align-center">{{ title }}</p>
@@ -52,11 +60,11 @@ img.center {
         </form>
     </div>
     <div class="col-xs-3 ">
-        <p class="lead text-align-center">Built in with Django &amp; Bootstrap</p>
+        <p class="lead text-align-center">Django &amp; Bootstrap</p>
         <img src="{% static 'img/django_badge.png' %}" class="img-responsive center ">
     </div>
     <div class="col-xs-3 ">
-        <p class="lead text-align-center">Created for starters of all kinds
+        <p class="lead text-align-center">Created for starters
         <br/>
         <span class="fa-stack fa-lg fa-5x">
             <i class="fa fa-comment-o fa-stack-2x "></i>
@@ -68,12 +76,12 @@ img.center {
         <p class="lead text-align-center">Always open source
         <br/><br/>
         <span class="fa-stack fa-lg fa-5x">
-            <i class="fa fa-circle-o-notch fa-stack-2x fa-spin"></i>
+            <i class="fa fa-circle-o-notch fa-stack-2x"></i>
             <i class="fa fa-github fa-stack-1x"></i>
         </span>
         </p>
     </div>
-  </div>
-
 </div>
+{% endif %}
+
 {% endblock %}
