@@ -48,7 +48,26 @@ img.center {
 {% if request.user.is_authenticated %}
 <h1>You are logged in!</h1>
 
-{{ queryset }}
+{% if queryset %}
+    <h2>Welcome Staff</h2>
+
+    <table class="table">
+    <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>Fulll Name</th>
+        <th>Timestamp</th>
+    </tr>
+    {% for instance in queryset %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ instance }}</td>
+        <td>{{ instance.full_name }}</td>
+        <td>{{ instance.timestamp|timesince }} ago</td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endif %}
 
 {% else %}
 <div class="row">

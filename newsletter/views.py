@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 from .forms import SignUpForm, ContactForm
-
+from .models import SignUp
 
 def home(request):
     title = "Join Us Now!"
@@ -24,8 +24,13 @@ def home(request):
         }
 
     if request.user.is_authenticated() and request.user.is_staff:
+        # print SignUp.objects.all()
+        # for instance in SignUp.objects.all():
+        #     print instance.full_name
+        queryset = SignUp.objects.all().order_by("-timestamp")
+        print SignUp.objects.all().order_by("-timestamp").filter(full_name__icontains="Alex").count()
         context = {
-            "queryset": [123, 456]
+            "queryset": queryset,
         }
 
     return render(request, "home.html", context)
